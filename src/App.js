@@ -13,7 +13,7 @@ const App = () => {
     <Provider store={store}>
       <div>
         <Form />
-        <p>Quizy ej ej</p>
+        <p>Dodane pytania i odpowiedzi</p>
         <List />
       </div>
     </Provider>
