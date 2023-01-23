@@ -5,6 +5,7 @@ import Element from './Element';
 
 const List = () => {
   const rates = useSelector((store) => store.rates);
+  console.log(rates, 'rates')
   const ratesElements = rates.map((rate) => (
     <Element key={rate.id} {...rate} />
   ));

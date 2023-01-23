@@ -11,7 +11,7 @@ export const addQuestionAndAnswers = ({question, answer}) => ({
   }
 });
 
-export const deleteRate = id => ({
+export const deleteQuestionAndAnswers = id => ({
   type: DELETE,
   payload: {
     id,

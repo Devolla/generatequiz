@@ -3,10 +3,12 @@ import {
   } from '../actions/appActions';
   
   export const appReducer = (state = [], action) => {
-    console.log('Nowy stan aplikacji')
     switch (action.type) {
       case ADD:
-        return [ ...state, action.payload];
+        console.log(state, 'state z appReducer')
+        return (
+          [ ...state, action.payload]
+        ) ;
       case EDIT:
         return state.map(currentStateElement => {
           if (currentStateElement.id !== action.payload.id) {

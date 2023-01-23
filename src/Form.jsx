@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { addQuestionAndAnswers, editQuestionAndAnswers } from './actions/appActions';
 
 const Form = ({
@@ -9,13 +8,13 @@ const Form = ({
   callback,
   id,
 }) => {
-  const [questionInput, setquestionInput] = useState(question);
+  const [questionInput, setQuestionInput] = useState(question);
   const [answerInput, setAnswerInput] = useState(answer);
 
   const dispatch = useDispatch();
 
   const handleChangeQuestion = event =>
-  setquestionInput(event.target.value);
+  setQuestionInput(event.target.value);
 
   const handleAnswerChange = event =>
   setAnswerInput(event.target.value);
