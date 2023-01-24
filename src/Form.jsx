@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addQuestionAndAnswers, editQuestionAndAnswers } from './actions/appActions';
 
-const Form = ({
-  question = '',
-  answer = '',
-  callback,
-  id,
-}) => {
+const Form = ({question = '', answer = '', callback, id }) => {
   const [questionInput, setQuestionInput] = useState(question);
   const [answerInput, setAnswerInput] = useState(answer);
-
   const dispatch = useDispatch();
 
   const handleChangeQuestion = event =>
@@ -21,7 +15,6 @@ const Form = ({
 
   const handleOnSubmit = event => {
     event.preventDefault();
-
     const questionObject = {
       question: questionInput,
       answer: answerInput,

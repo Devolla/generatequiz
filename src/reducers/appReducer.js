@@ -5,7 +5,7 @@ import {
   export const appReducer = (state = [], action) => {
     switch (action.type) {
       case ADD:
-        console.log(state, 'state z appReducer')
+        // console.log(state, 'state z appReducer')
         return (
           [ ...state, action.payload]
         ) ;

@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import Element from './Element';
 
 const List = () => {
-  const rates = useSelector((store) => store.rates);
-  console.log(rates, 'rates')
-  const ratesElements = rates.map((rate) => (
-    <Element key={rate.id} {...rate} />
+  const quizItems = useSelector((store) => store.quizItems);
+  // console.log(quizItems, 'state ze store')
+  const  quizElements = quizItems.map((quizItem) => (
+    <Element key={quizItem.id} {...quizItem} />
   ));
 
-  return <ul>{ratesElements}</ul>;
+  return <ul>{quizElements}</ul>;
 };
 
 export default List;

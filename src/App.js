@@ -9,6 +9,7 @@ import store from './store/store';
 import './index.css';
 
 const App = () => {
+      console.log(store.getState())
   return (
     <Provider store={store}>
       <div>
