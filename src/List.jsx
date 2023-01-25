@@ -13,7 +13,7 @@ const List = () => {
 
 const sendQuizData = () => {
   console.log(quizItems, 'state ze store')
-  axios.post('https://catfact.ninja/fact', quizItems)
+  axios.get('https://catfact.ninja/fact', quizItems)
   .then(response => console.log(response));
 }
  

@@ -7,8 +7,11 @@ const Form = ({question = '', answer = '', callback, id }) => {
   const [answerInput, setAnswerInput] = useState(answer);
   const dispatch = useDispatch();
 
-  const handleChangeQuestion = event =>
-  setQuestionInput(event.target.value);
+  const handleChangeQuestion = function (event) {
+    console.log(this)
+    setQuestionInput(event.target.value);
+  }
+ 
 
   const handleAnswerChange = event =>
   setAnswerInput(event.target.value);
@@ -39,6 +42,18 @@ const Form = ({question = '', answer = '', callback, id }) => {
             onChange={handleChangeQuestion}
             type="text"
             value={questionInput} 
+            name="title"
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Teaser:
+          <input
+            onChange={handleChangeQuestion}
+            type="text"
+            value={questionInput} 
+            name="teaser"
           />
         </label>
       </div>
