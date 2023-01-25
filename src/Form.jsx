@@ -7,11 +7,8 @@ const Form = ({question = '', answer = '', callback, id }) => {
   const [answerInput, setAnswerInput] = useState(answer);
   const dispatch = useDispatch();
 
-  const handleChangeQuestion = function (event) {
-    console.log(this)
-    setQuestionInput(event.target.value);
-  }
- 
+  const handleChangeQuestion = event =>
+  setQuestionInput(event.target.value);
 
   const handleAnswerChange = event =>
   setAnswerInput(event.target.value);
