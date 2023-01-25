@@ -6,7 +6,7 @@ import Element from './Element';
 
 const List = () => {
   const quizItems = useSelector((store) => store.quizItems);
-  console.log(quizItems, 'state ze store')
+  // console.log(quizItems, 'state ze store')
   // const myStringifiedObject = JSON.stringify(quizItems);
   // console.log(myStringifiedObject, 'myStringifiedObject')
   // console.log(quizElements, 'quizElements')
