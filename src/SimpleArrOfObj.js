@@ -3,18 +3,28 @@ import { useState } from "react";
 
 // component function
 function SimpleArrayOfObjectsComponent() {
+
+    // const [questionInput, setQuestionInput] = useState(question);
 const [users, setUsers] = useState([{
-    name: 'Ed',
-    id: 1
+    id: 0,
+    name: "Joe",
 }]);
 const [currentUser, setCurrentUser] = useState({}); //
 const [isEditing, setIsEditing] = useState(false);
+const [inputTxt, setinputTxt] = useState(''); //
 
-function handleAdd() {
+function handleAdd(e) {
+    const nb = users.length === 0 ? 0 : users.length;
+
     setUsers([...users, {
-        name: 'Ol',
-        id: users.length + 1
+        name: e.target.value,
+        id: nb + 1
     }])
+}
+
+function handleInputTxt(e) {
+    setinputTxt(e.target.value);
+    console.log(inputTxt)
 }
 
 
@@ -71,6 +81,12 @@ return (
           </li>
         )}
     </ul>
+    <input 
+    type='text'
+    name='add'
+    value={inputTxt}
+    onChange={handleInputTxt}
+    />
     <button onClick={handleAdd}>Dodaj usera</button>
   
     </>
