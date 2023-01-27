@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios'
 
 import Element from './Element';
+import SimpleArrayOfObjectsComponent from './SimpleArrOfObj';
 
 const List = () => {
   const quizItems = useSelector((store) => store.quizItems);
@@ -13,11 +14,11 @@ const List = () => {
 
 const sendQuizData = () => {
   console.log(quizItems, 'state ze store')
-  axios.post('https://catfact.ninja/fact', quizItems)
+  axios.get('https://catfact.ninja/fact', quizItems)
   .then(response => console.log(response));
 }
  
-  const  quizElements = quizItems.map((quizItem) => (
+  const quizElements = quizItems.map((quizItem) => (
     <Element key={quizItem.id} {...quizItem} />
   ));
 
@@ -26,6 +27,8 @@ const sendQuizData = () => {
   return quizElements.length > 0 ? <>
   <ul>{quizElements}</ul>
   <button onClick={sendQuizData}>Zapisz listę</button>
+
+  <SimpleArrayOfObjectsComponent/>
   </> :
   ''
 };

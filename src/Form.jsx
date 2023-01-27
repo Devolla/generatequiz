@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addQuestionAndAnswers, editQuestionAndAnswers } from './actions/appActions';
 
-const Form = ({question = '', answer = '', callback, id }) => {
+const Form = ({question='', answer='', callback, id }) => {
   const [questionInput, setQuestionInput] = useState(question);
   const [answerInput, setAnswerInput] = useState(answer);
   const dispatch = useDispatch();
@@ -10,15 +10,18 @@ const Form = ({question = '', answer = '', callback, id }) => {
   const handleChangeQuestion = event =>
   setQuestionInput(event.target.value);
 
-  const handleAnswerChange = event =>
-  setAnswerInput(event.target.value);
+  const handleAnswerChange = event => {
+    setAnswerInput(event.target.value);
+  }
 
   const handleOnSubmit = event => {
     event.preventDefault();
+    // const answerInputs = [];
+   
     const questionObject = {
       question: questionInput,
       answer: answerInput,
-      id,
+      id
     };
 
     id 
@@ -47,9 +50,9 @@ const Form = ({question = '', answer = '', callback, id }) => {
         <label>
           Teaser:
           <input
-            onChange={handleChangeQuestion}
+            onChange={handleAnswerChange}
             type="text"
-            value={questionInput} 
+            value={answerInput} 
             name="teaser"
           />
         </label>
