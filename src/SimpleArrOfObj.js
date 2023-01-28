@@ -1,99 +1,100 @@
 // import React and the useState hook
 import { useState } from "react";
-
 // component function
 function SimpleArrayOfObjectsComponent() {
+    const [users, setUsers] = useState([]);
+    const [editedUser, setEditedUser] = useState({});
+    const [inputTxt, setInputTxt] = useState('');
+    const [inputTxtE, setInputTxtE] = useState('');
+    const [listVisible, setListVisible] = useState(false);
+    const [isEdited, setIsEdited] = useState(false);
 
-    // const [questionInput, setQuestionInput] = useState(question);
-const [users, setUsers] = useState([{
-    id: 0,
-    name: "Joe",
-}]);
-const [currentUser, setCurrentUser] = useState({}); //
-const [isEditing, setIsEditing] = useState(false);
-const [inputTxt, setinputTxt] = useState(''); //
-
-function handleAdd(e) {
-    const nb = users.length === 0 ? 0 : users.length;
-
-    setUsers([...users, {
-        name: e.target.value,
-        id: nb + 1
-    }])
-}
-
-function handleInputTxt(e) {
-    setinputTxt(e.target.value);
-    console.log(inputTxt)
-}
-
-
-//ponizej i handle Edit i handleInputChange zmieniaja stan currentUsera!!!!!!!!!!!!!
-function handleEdit(user) {
-    setIsEditing(true);
-    // console.log(user, 'user')
-    // console.log(copied, 'copied')
-    setCurrentUser(user);
-}
-
-function handleInputChange(e) {
-  setCurrentUser({...currentUser, name: e.target.value})  ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!! przkaż obiekt zdestukyuryzowany i nadpisz obok własciwosc name
-// console.log(currentUser)
-}
-
-function handleSubmit(e) {
-    e.preventDefault();
-      //jak skopiowac stan !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  map i spr id current ze stanem i daj w iteracji zamiast starego - cały obiekt currUser
- const updateObject = users.map((user) => 
-        user.id === currentUser.id ? currentUser : user
- )
-    setUsers(updateObject);
-    setIsEditing(false);
-}
-
-
-return (
-    <>
-
-    {isEditing && currentUser.id &&
-    (<form onSubmit={handleSubmit}>
-    <input 
-    type='text'
-    name='edit'
-    value={currentUser.name}
-    onChange={handleInputChange}
-    />
-    <button type="submit">Update</button>
-    <button onClick={()=>setIsEditing(false)}>Cancel</button>
-    </form>)
+    function handleInputChange(e) {
+        setInputTxt(e.target.value);
+        // console.log(editedUser)
     }
-    
-    <ul>
-        {users.map((user) => 
-       
-          <li key={user.id}>
-            <p>{user.name}</p>
-            {!isEditing && (  //!!!!!
-                  <button onClick={()=>handleEdit(user)}>Edytuj</button> //@@@@
-            )  //!!!
+    function handleInputChangeE(e) {
+        setInputTxtE(e.target.value);
+        console.log(editedUser)
+    }
+    function handleSave() {
+        setUsers([
+            ...users, 
+            {
+            name: inputTxt,
+            id: users.length + 1
             }
-          
-          </li>
-        )}
-    </ul>
-    <input 
-    type='text'
-    name='add'
-    value={inputTxt}
-    onChange={handleInputTxt}
-    />
-    <button onClick={handleAdd}>Dodaj usera</button>
-  
-    </>
-)
+     ])
+     setListVisible(true)
+     console.log(users)
+     setInputTxt('')
+    }
+    function handleEditUser(user) {
+        setEditedUser(user);
+        setInputTxtE(user.name)
+        setIsEdited(true)
+    }
+    function handleSaveEdit() {
+      const updatedUser = {...editedUser, name: inputTxtE};
+      const updatedUsers = users.map((user) => 
+        user.id === editedUser.id ? updatedUser : user
+      )
+        console.log(updatedUsers)
+        setUsers(updatedUsers)
+        setIsEdited(false)
+    }
+    function handleCloseEdition() {
+        setIsEdited(false)
+    }
+    function handleDeleteUser(user) {
+        const newUsers = users.filter((userItem) =>
+        userItem.id!==user.id
+        )
+        setUsers(newUsers)
+    }
 
-}
-
+    return (
+        <>
+            <input 
+              name="user"
+              id="1"
+              type='text'
+              value={inputTxt}
+              onChange={handleInputChange}
+            />
+            <button onClick={handleSave}>Zapisz</button>
  
-
+            {listVisible ? (
+                <div>
+                 {users.map((user) =>
+                 <div>
+                    <p>{user.name}</p>
+                    {isEdited && user.id === editedUser.id ? 
+                    (
+                    <div>
+                    <input 
+                        name="useredit"
+                        id={user.id}
+                        type='text'
+                        value={inputTxtE}
+                        onChange={handleInputChangeE}
+                    />
+                    <button onClick={handleSaveEdit}>Zapisz edycje</button>
+                    <button onClick={handleCloseEdition}>Zamknij edycje</button>
+                    </div>
+                    ) 
+                    :  
+                    (
+                    <div>
+                    <button onClick={()=>handleEditUser(user)}>Edytuj</button>
+                    <button onClick={()=>handleDeleteUser(user)}>Usuń</button>
+                    </div>
+                    ) }
+                </div>
+            )}
+                </div>
+            ) : 'Brak dodanych użytowników'}
+        </>
+    )
+}
 export default SimpleArrayOfObjectsComponent;

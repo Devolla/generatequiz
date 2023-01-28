@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import axios from 'axios'
 
 import Element from './Element';
-import SimpleArrayOfObjectsComponent from './SimpleArrOfObj';
 
 const List = () => {
   const quizItems = useSelector((store) => store.quizItems);
@@ -27,8 +26,6 @@ const sendQuizData = () => {
   return quizElements.length > 0 ? <>
   <ul>{quizElements}</ul>
   <button onClick={sendQuizData}>Zapisz listę</button>
-
-  <SimpleArrayOfObjectsComponent/>
   </> :
   ''
 };

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 
 import Form from './Form';
 import List from './List';
+import SimpleArrayOfObjectsComponent from './SimpleArrOfObj';
 
 import store from './store/store';
 
@@ -13,9 +14,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <div>
-        <Form />
+        {/* <Form />
         <p>Dodane pytania i odpowiedzi</p>
-        <List />
+        <List /> */}
+        <SimpleArrayOfObjectsComponent/>
       </div>
     </Provider>
   );
