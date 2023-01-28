@@ -7,7 +7,7 @@ export const addQuestionAndAnswers = ({question, answer}) => ({
   payload: {
     question,
     answer,
-    id: Math.floor(Math.random() * 1234),
+    id: Math.floor(Math.random() * 1234)
   }
 });
 
