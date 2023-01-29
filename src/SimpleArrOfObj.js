@@ -1,5 +1,5 @@
-// import React and the useState hook
-import { useState } from "react";
+import { useState, createContext } from "react";
+import UserContext from './UserContext';
 // component function
 function SimpleArrayOfObjectsComponent() {
     const [users, setUsers] = useState([]);
@@ -54,7 +54,7 @@ function SimpleArrayOfObjectsComponent() {
     }
 
     return (
-        <>
+        <UserContext.Provider value={users}>
             <input 
               name="user"
               id="1"
@@ -94,7 +94,7 @@ function SimpleArrayOfObjectsComponent() {
             )}
                 </div>
             ) : 'Brak dodanych użytowników'}
-        </>
+        </UserContext.Provider>
     )
 }
 export default SimpleArrayOfObjectsComponent;

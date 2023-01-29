@@ -1,9 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import Form from './Form';
-import List from './List';
+// import Form from './Form';
+// import List from './List';
 import SimpleArrayOfObjectsComponent from './SimpleArrOfObj';
+// import Component1 from './Ex';
 
 import store from './store/store';
 
@@ -18,6 +19,7 @@ const App = () => {
         <p>Dodane pytania i odpowiedzi</p>
         <List /> */}
         <SimpleArrayOfObjectsComponent/>
+        {/* <Component1/> */}
       </div>
     </Provider>
   );
