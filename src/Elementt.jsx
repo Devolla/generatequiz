@@ -16,14 +16,14 @@ const Elementt = ({...user}) => {
     }
     function handleInputChangeE(e) {
         setInputTxtE(e.target.value);
-        console.log(editedUser)
+        // console.log(editedUser)
     }
     function handleSaveEdit() {
       const updatedUser = {...editedUser, name: inputTxtE};
       const updatedUsers = users.map((user) => 
         user.id === editedUser.id ? updatedUser : user
       )
-        console.log(updatedUsers)
+        // console.log(updatedUsers)
         setUsers(updatedUsers)
         setIsEdited(false)
     }

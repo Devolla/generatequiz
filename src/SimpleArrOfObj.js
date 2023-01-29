@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UserContext from './UserContext';
 import Listt from "./Listt";
 // component function
@@ -7,7 +7,13 @@ function SimpleArrayOfObjectsComponent() {
     const [inputTxt, setInputTxt] = useState('');
     const [listVisible, setListVisible] = useState(false);
     
-    function handleInputChange(e) {
+
+
+    useEffect(() => {
+      console.log(users, 'users z useEffect')
+    }, [users])
+
+      function handleInputChange(e) {
         setInputTxt(e.target.value);
         // console.log(e.)
     }
@@ -21,7 +27,6 @@ function SimpleArrayOfObjectsComponent() {
             }
      ])
      setListVisible(true)
-     console.log(users)
      setInputTxt('')
     }
 
